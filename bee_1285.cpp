@@ -32,3 +32,42 @@ int main()
     }
     return 0;
 }
+
+
+// another version
+#include<bits/stdc++.h>
+using namespace std;
+
+bool hasRepeatedDigits(int num) {
+    unordered_map<int, int> digitFrequency;
+    while (num > 0) {
+        int x = num % 10;
+        digitFrequency[x]++;
+        num /= 10;
+    }
+
+    for (const auto& pair : digitFrequency) {
+        if (pair.second > 1) {
+            return true; 
+        }
+    }
+    return false; 
+}
+
+int countNumbersWithNoRepeatedDigits(int n, int m) {
+    int count = 0;
+    for (int i = n; i <= m; i++) {
+        if (!hasRepeatedDigits(i)) {
+            count++;
+        }
+    }
+    return count;
+}
+
+int main() {
+    int n, m;
+    while (cin >> n >> m) {
+        cout << countNumbersWithNoRepeatedDigits(n, m) << endl;
+    }
+    return 0;
+}
