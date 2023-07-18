@@ -26,3 +26,30 @@ int main()
     }
     return 0;
 }
+
+//improved version
+#include<bits/stdc++.h>
+using namespace std;
+
+int freqQues(int &n , int &k, unordered_map<int,int> &map){
+    int cnt=0;
+    for(const auto & it: map){
+        if(it.second >= k) cnt++;
+    }
+    return cnt;
+} 
+int main()
+{
+    int n, k;
+    while (cin >> n >> k)
+    {
+        if(n==0 && k==0) break;
+        unordered_map<int,int> map;
+        for(int i=1; i<=n; i++){
+            int x; cin >> x;
+            map[x]++;
+        }
+        cout << freqQues(n, k, map) << endl;
+    }
+    return 0;
+}
